@@ -7,9 +7,21 @@ def write_csv(header,data,filename):
          csvwriter.writerows(data) # 5. write the rest of the data
 
 
-header = ['Name', 'Course1 Score', 'Course2 Score']
-data = [['Ali', 92, 80], ['Jonny', 75, 56], ['Mikey', 85, 98]]
-filename="./studentscore.csv"
-write_csv(header,data,filename)
+# runs write_csv if it does not recive an input it will 
+# run wite_csv with example values
+def run_write_csv(header=[],data=[],filename=""):
+    if not header:
+            header = ['Name', 'Course1 Score', 'Course2 Score']
+    if not data:
+           data = [['Ali', 92, 80], ['Jonny', 75, 56], ['Mikey', 85, 98]]
+    if not filename:
+       filename="./studentscore.csv"
+    write_csv(header,data,filename)
+
+
+
+
+
+
 
 
