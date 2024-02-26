@@ -32,10 +32,30 @@ def run_read_csv(filename=""):
     if not filename:
        filename="./studentscore.csv"
     header,data=read_csv(filename)
-    print(header,data)
-
-run_write_csv()
-run_read_csv()
+    return header,data
 
 
+# the recommmended feld scraped by webscraper.io include not just the name of the video
+# but also views,name of the channel,.....
+# we don't need all this data so we will remove it and keep only the name of the video for the sake 
+# of lab2 in the course
+def process_recommended(data):
+    newdata=data.copy()
+    for index,row in enumerate(data):
+        newdata[index][4]=row[4].split('\n')[0]
+    return newdata
 
+
+def run_process_recommended(filename=""):
+    if filename=="":
+       filename="/home/majie/Documents/Coursera/ComputationalSocialScience/LabWeek2/tayolrswift.csv"
+    header,data=read_csv(filename)
+    print("#########Before we processed:")
+    print(data[0:2])
+    newdata=process_recommended(data)
+    print("#########After we processed:")
+    print(newdata[0:2])
+    return newdata
+
+if __name__ == '__main__':
+   run_process_recommended()
