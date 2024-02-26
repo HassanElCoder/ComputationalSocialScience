@@ -18,10 +18,24 @@ def run_write_csv(header=[],data=[],filename=""):
        filename="./studentscore.csv"
     write_csv(header,data,filename)
 
+def read_csv(filename):
+    data = []
+    with open(filename, 'r') as fileobj:
+         csvreader = csv.reader(fileobj)
+         header = next(csvreader)
+         for row in csvreader:
+             data.append(row)
+    return header,data
 
 
+def run_read_csv(filename=""):
+    if not filename:
+       filename="./studentscore.csv"
+    header,data=read_csv(filename)
+    print(header,data)
 
-
+run_write_csv()
+run_read_csv()
 
 
 
